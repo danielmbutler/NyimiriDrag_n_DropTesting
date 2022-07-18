@@ -1,40 +1,22 @@
 package com.example.nyimiridrag_n_droptesting;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.ClipData;
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.AssetFileDescriptor;
 import android.graphics.drawable.Drawable;
-import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.Animation;
-import android.view.animation.RotateAnimation;
-import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-//import com.example.nyimiridrag_n_droptesting.models.Pieces;
+import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
 
 public class A0 extends AppCompatActivity {
     ImageView iv1,iv2,iv3,iv4;
+    boolean correct = false;
 
 
     @Override
@@ -60,9 +42,9 @@ public class A0 extends AppCompatActivity {
 
         //iv3 = (ImageView) findViewById (R.id.imageView3);
         iv1.setOnTouchListener(new MyTouchListener());
-        //iv2.setOnTouchListener(new MyTouchListener());
+        iv2.setOnDragListener(new MyDragListener());
         iv3.setOnDragListener(new MyDragListener());
-        //iv4.setOnTouchListener(new MyTouchListener());
+        iv4.setOnDragListener(new MyDragListener());
 
     }
 
@@ -97,6 +79,7 @@ public class A0 extends AppCompatActivity {
                 case DragEvent.ACTION_DRAG_EXITED:
                     break;
                 case DragEvent.ACTION_DROP:
+                    Log.d("A_CUPS_N_SMALL","Uyira");
                     //handle the dragged view being dropped over a drop view
                     View view = (View) event.getLocalState();
                     Drawable dropshadow = getResources().getDrawable(R.drawable.elephant1);
@@ -106,18 +89,27 @@ public class A0 extends AppCompatActivity {
                     ImageView dropped = (ImageView) view;
                     //if there is already an item here, set it back visible in its original place
                     String temp = "A_CUPS";
-                    if(temp.equals(view.getTag())){
-                        dropTarget.setBackground(dropshadow);
+                    if(temp.equals(v.getTag())){
+                        // I would advise using set foreground if possible (limit to devices newer than 2015)
+                        // as this puts the image on top of the shadow
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            dropTarget.setForeground(dropshadow);
+                        }
+                        correct = true;
                         Toast.makeText(A0.this, "Correct", Toast.LENGTH_SHORT).show();
-
                     }else {
+                        // reset image visibility so it can be re-dragged
+                        iv1.setVisibility(View.VISIBLE);
                         Toast.makeText(A0.this, "Uyira", Toast.LENGTH_SHORT).show();
                         Log.d("A_CUPS_N_SMALL","Uyira");
-                        view.setVisibility(View.INVISIBLE);
                     }
                     break;
                 case DragEvent.ACTION_DRAG_ENDED:
-                    if (dropEventNotHandled(event))
+                    if (dropEventNotHandled(event)){
+                        if (!correct){
+                            iv1.setVisibility(View.VISIBLE);
+                        }
+                    }
                     break;
 
                 default:
@@ -126,7 +118,6 @@ public class A0 extends AppCompatActivity {
             return true;
         }
         private boolean dropEventNotHandled(DragEvent dragEvent) {
-
             return !dragEvent.getResult();
         }
     }
