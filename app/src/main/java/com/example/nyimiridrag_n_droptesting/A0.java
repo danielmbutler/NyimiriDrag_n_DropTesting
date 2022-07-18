@@ -12,16 +12,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-//import com.example.nyimiridrag_n_droptesting.models.Pieces;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
 
 public class A0 extends AppCompatActivity {
     ImageView iv1,iv2,iv3,iv4;
+    boolean correct = false;
 
 
     @Override
@@ -100,6 +94,7 @@ public class A0 extends AppCompatActivity {
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                             dropTarget.setForeground(dropshadow);
                         }
+                        correct = true;
                         Toast.makeText(A0.this, "Correct", Toast.LENGTH_SHORT).show();
                     }else {
                         // reset image visibility so it can be re-dragged
@@ -109,16 +104,18 @@ public class A0 extends AppCompatActivity {
                     }
                     break;
                 case DragEvent.ACTION_DRAG_ENDED:
-                    if (dropEventNotHandled(event))
-                        break;
-
+                    if (dropEventNotHandled(event)){
+                        if (!correct){
+                            iv1.setVisibility(View.VISIBLE);
+                        }
+                    }
+                    break;
                 default:
                     break;
             }
             return true;
         }
         private boolean dropEventNotHandled(DragEvent dragEvent) {
-
             return !dragEvent.getResult();
         }
     }
