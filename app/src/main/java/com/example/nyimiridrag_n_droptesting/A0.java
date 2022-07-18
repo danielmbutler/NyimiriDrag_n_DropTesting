@@ -1,5 +1,6 @@
 package com.example.nyimiridrag_n_droptesting;
 
+import androidx.appcompat.app.AppCompatActivity;
 import android.content.ClipData;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -10,8 +11,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 
 public class A0 extends AppCompatActivity {
@@ -111,7 +110,6 @@ public class A0 extends AppCompatActivity {
                         }
                     }
                     break;
-
                 default:
                     break;
             }
