@@ -16,13 +16,13 @@
         android:layout_weight="1"
         android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/A_Cups_N_small"
+        app:layout_constraintBottom_toTopOf="@+id/Hippo_Shadow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/A_Cups"
+            android:id="@+id/Elephant"
             android:layout_width="wrap_content"
             android:layout_height="152dp"
             android:layout_gravity="center"
@@ -35,7 +35,47 @@
             android:maxHeight="150dp"
             android:scaleType="fitCenter"
             android:src="@drawable/elephant1"
-            android:tag="A_CUPS"
+            android:tag="ELEPHANT"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/todo" />
+
+        <ImageView
+            android:id="@+id/Hippo"
+            android:layout_width="wrap_content"
+            android:layout_height="152dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:adjustViewBounds="true"
+            android:maxWidth="150dp"
+            android:maxHeight="150dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/hippo1"
+            android:tag="HIPPO"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/todo" />
+
+        <ImageView
+            android:id="@+id/Rhino"
+            android:layout_width="wrap_content"
+            android:layout_height="152dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:adjustViewBounds="true"
+            android:maxWidth="150dp"
+            android:maxHeight="150dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/rhino1"
+            android:tag="RHINO"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -44,7 +84,7 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/A_Cups_N_small"
+        android:id="@+id/Hippo_Shadow"
         android:layout_width="180dip"
         android:layout_height="200dip"
         android:layout_alignParentStart="true"
@@ -52,15 +92,15 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="50dp"
         android:contentDescription="TODO"
-        android:src="@drawable/hippo"
-        android:tag="A_CUPS_N_SMALL"
+        android:src="@drawable/hippo2"
+        android:tag="HIPPO"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/A_Cups_Shadow"
+        app:layout_constraintEnd_toStartOf="@+id/Rhino_Shadow"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topLayout" />
 
     <ImageView
-        android:id="@+id/A_Cups_Shadow"
+        android:id="@+id/Elephant_Shadow"
         android:layout_width="150dip"
         android:layout_height="150dip"
         android:layout_alignParentEnd="true"
@@ -68,16 +108,16 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="4dp"
         android:src="@drawable/elephant2"
-        android:tag="A_CUPS"
-        app:layout_constraintBottom_toTopOf="@+id/A_Small"
+        android:tag="ELEPHANT"
+        app:layout_constraintBottom_toTopOf="@+id/Rhino_Shadow"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/A_Cups_N_small"
-        app:layout_constraintTop_toTopOf="@+id/A_Cups_N_small"
+        app:layout_constraintStart_toEndOf="@+id/Hippo_Shadow"
+        app:layout_constraintTop_toTopOf="@+id/Hippo_Shadow"
         android:contentDescription="TODO" />
 
 
     <ImageView
-        android:id="@+id/A_Small"
+        android:id="@+id/Rhino_Shadow"
         android:layout_width="100dip"
         android:layout_height="100dip"
         android:layout_alignParentEnd="true"
@@ -85,10 +125,20 @@
         android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
         android:contentDescription="TODO"
-        android:src="@drawable/rhino"
-        android:tag="A_SMALL"
+        android:src="@drawable/rhino2"
+        android:tag="RHINO"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/A_Cups_N_small"
-        app:layout_constraintTop_toBottomOf="@+id/A_Cups_Shadow" />
+        app:layout_constraintStart_toEndOf="@+id/Hippo_Shadow"
+        app:layout_constraintTop_toBottomOf="@+id/Elephant_Shadow" />
+
+    <Button
+        android:id="@+id/Repeat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/repeat"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Hippo_Shadow" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

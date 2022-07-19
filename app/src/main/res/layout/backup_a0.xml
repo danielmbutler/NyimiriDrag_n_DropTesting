@@ -4,3 +4,353 @@
     android:layout_height="match_parent">
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!-- <?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".A0">
+
+    <LinearLayout
+        android:id="@+id/topLayout"
+        android:layout_width="match_parent"
+        android:layout_height="200dip"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/bottomLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/Elephant"
+            android:layout_width="wrap_content"
+            android:layout_height="152dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/todo"
+            android:maxWidth="150dp"
+            android:maxHeight="150dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/elephant1"
+            android:tag="ELEPHANT"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/Hippo"
+            android:layout_width="wrap_content"
+            android:layout_height="152dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/todo"
+            android:maxWidth="150dp"
+            android:maxHeight="150dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/hippo1"
+            android:tag="HIPPO"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/Rhino"
+            android:layout_width="wrap_content"
+            android:layout_height="152dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/todo"
+            android:maxWidth="150dp"
+            android:maxHeight="150dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/rhino1"
+            android:tag="RHINO"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bottomLayout"
+        android:layout_width="match_parent"
+        android:layout_height="400dip"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topLayout">
+
+    <ImageView
+        android:id="@+id/Hippo_Shadow"
+        android:layout_width="180dip"
+        android:layout_height="200dip"
+        android:layout_alignParentStart="true"
+        android:contentDescription="TODO"
+        android:src="@drawable/hippo2"
+        android:tag="HIPPO"
+        app:layout_constraintBottom_toBottomOf="@+id/BottomLayout"
+        app:layout_constraintStart_toStartOf="@+id/BottomLayout"
+        app:layout_constraintTop_toTopOf="@+id/BottomLayout" />
+
+    <ImageView
+        android:id="@+id/Elephant_Shadow"
+        android:layout_width="150dip"
+        android:layout_height="150dip"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="4dp"
+        android:src="@drawable/elephant2"
+        android:tag="ELEPHANT"
+        app:layout_constraintBottom_toTopOf="@+id/Rhino_Shadow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Hippo_Shadow"
+        app:layout_constraintTop_toTopOf="@+id/Hippo_Shadow"
+        android:contentDescription="TODO" />
+
+
+    <ImageView
+        android:id="@+id/Rhino_Shadow"
+        android:layout_width="100dip"
+        android:layout_height="100dip"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:contentDescription="TODO"
+        android:src="@drawable/rhino2"
+        android:tag="RHINO"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Hippo_Shadow"
+        app:layout_constraintTop_toBottomOf="@+id/Elephant_Shadow" />
+</LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+ ================================================================================
+ ================================================================================
+
+ package com.example.nyimiridrag_n_droptesting;
+
+import androidx.appcompat.app.AppCompatActivity;
+import android.content.ClipData;
+import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
+import android.os.Build;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.DragEvent;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Toast;
+
+
+public class A0 extends AppCompatActivity {
+    LinearLayout topLayout;
+    ImageView iv1,iv2,iv3,iv4,iv5,iv6;
+    boolean correct = false;
+    int images = 0;
+    MediaPlayer applaud;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_a0);
+
+        initControls();
+
+        applaud = MediaPlayer.create(A0.this, R.raw.clapping);
+
+    }
+
+    private void initControls() {
+        // TODO Auto-generated method stub
+
+        iv1 = findViewById (R.id.Elephant);
+        iv2 = findViewById (R.id.Hippo_Shadow);
+        iv3 = findViewById (R.id.Elephant_Shadow);
+        iv4 = findViewById (R.id.Rhino_Shadow);
+        //Two additional images for: Hippo and Rhino.
+        iv5 = findViewById(R.id.Hippo);
+        iv6 = findViewById(R.id.Rhino);
+
+
+
+        iv1.setTag("ELEPHANT");
+        iv2.setTag("HIPPO");
+        iv3.setTag("ELEPHANT");
+        iv4.setTag("RHINO");
+        //Two additional image Tags for: Hippo and Rhino.
+        iv5.setTag("HIPPO");
+        iv6.setTag("RHINO");
+
+        //setOnTouchListener
+        iv1.setOnTouchListener(new MyTouchListener());
+        iv5.setOnTouchListener(new MyTouchListener());
+        iv6.setOnTouchListener(new MyTouchListener());
+
+
+        //setOnDragListener
+        iv2.setOnDragListener(new MyDragListener());
+        iv3.setOnDragListener(new MyDragListener());
+        iv4.setOnDragListener(new MyDragListener());
+
+    }
+
+    private final class MyTouchListener implements View.OnTouchListener {
+        @Override
+        public boolean onTouch(View view, MotionEvent motionEvent) {
+            if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                ClipData data = ClipData.newPlainText("", "");
+                View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
+                view.startDrag(data, shadowBuilder, view, 0);
+                view.setVisibility(View.INVISIBLE);
+                return true;
+            } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
+                view.setVisibility(View.VISIBLE);
+                return true;
+            }else {
+                return false;
+            }
+        }
+    }
+
+    class MyDragListener implements View.OnDragListener {
+        @Override
+        public boolean onDrag(View v, DragEvent event) {
+            switch (event.getAction()) {
+                case DragEvent.ACTION_DRAG_STARTED:
+                    //if(view.getId() == R.id.btn4 && v.getId() == R.id.target4)
+                    if(v != iv2)
+                        v.setVisibility(View.VISIBLE);
+                    break;
+                case DragEvent.ACTION_DRAG_ENTERED:
+                    break;
+                case DragEvent.ACTION_DRAG_EXITED:
+                    break;
+                case DragEvent.ACTION_DROP:
+                    //handle the dragged view being dropped over a drop view
+                    View view = (View) event.getLocalState();
+                    //Drawable drop_shadow = getResources().getDrawable(R.drawable.elephant1);
+                    //view dragged item is being dropped on
+                    ImageView dropTarget = (ImageView) v;
+                    //view being dragged and dropped
+                    ImageView dropped = (ImageView) view;
+                    //if there is already an item here, set it back visible in its original place
+                    String temp1 = "ELEPHANT";
+                    String temp2 = "HIPPO";
+                    String temp3 = "RHINO";
+
+                    //if(temp1.equals(iv6.getTag())){
+                    if(temp1  == view.getTag() && v.getId() == R.id.Elephant_Shadow){
+                        Drawable drop_shadow = getResources().getDrawable(R.drawable.elephant1);
+                        // I would advise using set foreground if possible (limit to devices newer than 2015)
+                        // as this puts the image on top of the shadow
+                        LinearLayout topLayout = (LinearLayout) view.getParent();
+                        topLayout.removeView(view);
+                        LinearLayout bottomLayout = (LinearLayout)v;
+                        iv1.setVisibility(View.GONE);
+                        bottomLayout.addView(view);
+                        images++;
+                        if(images == 3){
+                            applaud.start();
+                        }
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            dropTarget.setForeground(drop_shadow);
+                        }
+                        correct = true;
+                        Toast.makeText(A0.this, "Correct", Toast.LENGTH_SHORT).show();
+                    }else if(temp2  == view.getTag() && v.getId() == R.id.Hippo_Shadow){
+                        Drawable drop_shadow = getResources().getDrawable(R.drawable.hippo1);
+                    // I would advise using set foreground if possible (limit to devices newer than 2015)
+                    // as this puts the image on top of the shadow
+                        LinearLayout topLayout = (LinearLayout) view.getParent();
+                        topLayout.removeView(view);
+                        LinearLayout bottomLayout = (LinearLayout)v;
+                        iv5.setVisibility(View.GONE);
+                        bottomLayout.addView(view);
+                        images++;
+                        if(images == 3){
+                            applaud.start();
+                        }
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            dropTarget.setForeground(drop_shadow);
+                        }
+                        correct = true;
+                        Toast.makeText(A0.this, "Correct", Toast.LENGTH_SHORT).show();
+                    }else if(temp3  == view.getTag() && v.getId() == R.id.Rhino_Shadow){
+                        Drawable drop_shadow = getResources().getDrawable(R.drawable.rhino1);
+                        // I would advise using set foreground if possible (limit to devices newer than 2015)
+                        // as this puts the image on top of the shadow
+                        LinearLayout topLayout = (LinearLayout) view.getParent();
+                        topLayout.removeView(view);
+                        LinearLayout bottomLayout = (LinearLayout)v;
+                        iv6.setVisibility(View.GONE);
+                        bottomLayout.addView(view);
+                        images++;
+                        if(images == 3){
+                            applaud.start();
+                        }
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            dropTarget.setForeground(drop_shadow);
+                        }
+                        correct = true;
+                        Toast.makeText(A0.this, "Correct", Toast.LENGTH_SHORT).show();
+                    }else {
+                        // reset image visibility so it can be re-dragged
+                        iv1.setVisibility(View.VISIBLE);
+                        iv5.setVisibility(View.VISIBLE);
+                        iv6.setVisibility(View.VISIBLE);
+                        Toast.makeText(A0.this, "Uyira = Repeat", Toast.LENGTH_SHORT).show();
+                    }
+                    break;
+                case DragEvent.ACTION_DRAG_ENDED:
+                    if (dropEventNotHandled(event)){
+                        if (!correct){
+                            iv1.setVisibility(View.VISIBLE);
+                            iv5.setVisibility(View.VISIBLE);
+                            iv6.setVisibility(View.VISIBLE);
+                            Toast.makeText(A0.this, "Match image with correct Shadow", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }
+            return true;
+        }
+        private boolean dropEventNotHandled(DragEvent dragEvent) {
+            return !dragEvent.getResult();
+        }
+    }
+}-->
