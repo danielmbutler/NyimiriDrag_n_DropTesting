@@ -16,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 
 public class A0 extends AppCompatActivity {
     LinearLayout topLayout;
@@ -24,13 +26,18 @@ public class A0 extends AppCompatActivity {
     int i = 0;
     MediaPlayer applaud;
     Button Repeat;
+    ArrayList<ImageView> imageList;
+    ArrayList<String> correctTags;
+    View draggedImage;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_a0);
-
+        imageList = new ArrayList<>();
+        correctTags = new ArrayList<>();
         initControls();
 
     }
@@ -40,13 +47,22 @@ public class A0 extends AppCompatActivity {
             //MediaPlayer
         applaud = MediaPlayer.create(A0.this, R.raw.clapping);
 
-        iv1 = findViewById (R.id.Elephant);
-        iv2 = findViewById (R.id.Hippo_Shadow);
-        iv3 = findViewById (R.id.Elephant_Shadow);
-        iv4 = findViewById (R.id.Rhino_Shadow);
+        imageList.add(iv1 = findViewById (R.id.Elephant));
+         iv2 = findViewById (R.id.Hippo_Shadow);
+         iv3 = findViewById (R.id.Elephant_Shadow);
+         iv4 = findViewById (R.id.Rhino_Shadow);
         //Two additional images for: Hippo and Rhino.
-        iv5 = findViewById(R.id.Hippo);
-        iv6 = findViewById(R.id.Rhino);
+        imageList.add(iv5 = findViewById(R.id.Hippo));
+        imageList.add(iv6 = findViewById(R.id.Rhino));
+
+        // hide all images
+        for (int i = 0; i < imageList.size() ; i++) {
+            imageList.get(i).setVisibility(View.INVISIBLE);
+        }
+
+        // show random image
+        int index = (int)(Math.random() * imageList.size());
+        imageList.get(index).setVisibility(View.VISIBLE);
 
 
 
@@ -57,6 +73,7 @@ public class A0 extends AppCompatActivity {
         //Two additional image Tags for: Hippo and Rhino.
         iv5.setTag("HIPPO");
         iv6.setTag("RHINO");
+
 
         //setOnTouchListener
         iv1.setOnTouchListener(new MyTouchListener());
@@ -73,6 +90,8 @@ public class A0 extends AppCompatActivity {
         Repeat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // finish current activity
+                finish();
                 Intent intent = new Intent(A0.this, A0.class);
                 startActivity(intent);
             }
@@ -88,6 +107,7 @@ public class A0 extends AppCompatActivity {
                 View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
                 view.startDrag(data, shadowBuilder, view, 0);
                 view.setVisibility(View.INVISIBLE);
+                draggedImage = view;
                 return true;
             } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
                 view.setVisibility(View.VISIBLE);
@@ -98,14 +118,25 @@ public class A0 extends AppCompatActivity {
         }
     }
 
+    /**
+     * Loop thorough images and check if they have already been shown, if not show image
+     */
+    private void showNextImage(){
+        for (int j = 0; j < imageList.size(); j++) {
+            ImageView imageView = imageList.get(j);
+            if (!correctTags.contains(imageView.getTag().toString())){
+                imageView.setVisibility(View.VISIBLE);
+                return;
+            }
+        }
+    }
+
     class MyDragListener implements View.OnDragListener {
         @Override
         public boolean onDrag(View v, DragEvent event) {
             switch (event.getAction()) {
                 case DragEvent.ACTION_DRAG_STARTED:
                         //if(view.getId() == R.id.btn4 && v.getId() == R.id.target4)
-                    if(v != iv2)
-                        v.setVisibility(View.VISIBLE);
                     break;
                 case DragEvent.ACTION_DRAG_ENTERED:
                     break;
@@ -128,6 +159,8 @@ public class A0 extends AppCompatActivity {
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                                 dropTarget.setForeground(drop_shadow);
                                 i++;
+                                correctTags.add(temp1);
+                                showNextImage();
                                 if(i==3){
                                     applaud.start();
                             }
@@ -138,6 +171,8 @@ public class A0 extends AppCompatActivity {
                         Drawable drop_shadow = getResources().getDrawable(R.drawable.hippo1);
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                             dropTarget.setForeground(drop_shadow);
+                            correctTags.add(temp2);
+                            showNextImage();
                             i++;
                             if(i==3){
                                 applaud.start();
@@ -149,6 +184,8 @@ public class A0 extends AppCompatActivity {
                         Drawable drop_shadow = getResources().getDrawable(R.drawable.rhino1);
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                             dropTarget.setForeground(drop_shadow);
+                            correctTags.add(temp3);
+                            showNextImage();
                             i++;
                             if(i==3){
                                 applaud.start();
@@ -158,18 +195,14 @@ public class A0 extends AppCompatActivity {
                         Toast.makeText(A0.this, "Correct", Toast.LENGTH_SHORT).show();
                     }else {
                             // reset image visibility so it can be re-dragged
-                        iv1.setVisibility(View.VISIBLE);
-                        iv5.setVisibility(View.VISIBLE);
-                        iv6.setVisibility(View.VISIBLE);
+                        draggedImage.setVisibility(View.VISIBLE);
                         Toast.makeText(A0.this, "Uyira = Repeat", Toast.LENGTH_SHORT).show();
                     }
                     break;
                 case DragEvent.ACTION_DRAG_ENDED:
                     if (dropEventNotHandled(event)){
                         if (!correct){
-                            iv1.setVisibility(View.VISIBLE);
-                            iv5.setVisibility(View.VISIBLE);
-                            iv6.setVisibility(View.VISIBLE);
+                            draggedImage.setVisibility(View.VISIBLE);
                             Toast.makeText(A0.this, "Match image with correct Shadow", Toast.LENGTH_SHORT).show();
                         }
                     }
