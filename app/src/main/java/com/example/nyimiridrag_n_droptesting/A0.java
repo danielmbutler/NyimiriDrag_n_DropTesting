@@ -1,6 +1,8 @@
 package com.example.nyimiridrag_n_droptesting;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
+
 import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -12,9 +14,13 @@ import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import com.ebanx.swipebtn.OnStateChangeListener;
+import com.ebanx.swipebtn.SwipeButton;
 
 import java.util.ArrayList;
 
@@ -24,11 +30,12 @@ public class A0 extends AppCompatActivity {
     ImageView iv1,iv2,iv3,iv4,iv5,iv6;
     boolean correct = false;
     int i = 0;
-    MediaPlayer applaud;
-    Button Repeat;
+    MediaPlayer applaud, elephant, hippo, rhino, congrats;
     ArrayList<ImageView> imageList;
     ArrayList<String> correctTags;
     View draggedImage;
+    SwipeButton swipeNext;
+
 
 
 
@@ -46,6 +53,10 @@ public class A0 extends AppCompatActivity {
         // TODO Auto-generated method stub
             //MediaPlayer
         applaud = MediaPlayer.create(A0.this, R.raw.clapping);
+        elephant = MediaPlayer.create(A0.this, R.raw.elepha01);
+        hippo = MediaPlayer.create(A0.this, R.raw.hippop01);
+        rhino = MediaPlayer.create(A0.this, R.raw.rhinoc01);
+        congrats = MediaPlayer.create(A0.this, R.raw.congrats);
 
         imageList.add(iv1 = findViewById (R.id.Elephant));
          iv2 = findViewById (R.id.Hippo_Shadow);
@@ -85,14 +96,14 @@ public class A0 extends AppCompatActivity {
         iv3.setOnDragListener(new MyDragListener());
         iv4.setOnDragListener(new MyDragListener());
 
-        //Button Repeat
-        Repeat = findViewById(R.id.Repeat);
-        Repeat.setOnClickListener(new View.OnClickListener() {
+        //Swipe Button
+        swipeNext = findViewById(R.id.switch1);
+        swipeNext.setOnStateChangeListener(new OnStateChangeListener() {
             @Override
-            public void onClick(View view) {
+            public void onStateChange(boolean active) {
                 // finish current activity
                 finish();
-                Intent intent = new Intent(A0.this, A0.class);
+                Intent intent = new Intent(A0.this, A1.class);
                 startActivity(intent);
             }
         });
@@ -136,7 +147,6 @@ public class A0 extends AppCompatActivity {
         public boolean onDrag(View v, DragEvent event) {
             switch (event.getAction()) {
                 case DragEvent.ACTION_DRAG_STARTED:
-                        //if(view.getId() == R.id.btn4 && v.getId() == R.id.target4)
                     break;
                 case DragEvent.ACTION_DRAG_ENTERED:
                     break;
@@ -163,7 +173,9 @@ public class A0 extends AppCompatActivity {
                                 showNextImage();
                                 if(i==3){
                                     applaud.start();
-                            }
+                                    Intent intent = new Intent(A0.this, Congrats.class);
+                                    startActivity(intent);
+                            }elephant.start();
                         }
                         correct = true;
                         Toast.makeText(A0.this, "Correct", Toast.LENGTH_SHORT).show();
@@ -176,7 +188,9 @@ public class A0 extends AppCompatActivity {
                             i++;
                             if(i==3){
                                 applaud.start();
-                            }
+                                Intent intent = new Intent(A0.this, Congrats.class);
+                                startActivity(intent);
+                            }hippo.start();
                         }
                         correct = true;
                         Toast.makeText(A0.this, "Correct", Toast.LENGTH_SHORT).show();
@@ -189,7 +203,9 @@ public class A0 extends AppCompatActivity {
                             i++;
                             if(i==3){
                                 applaud.start();
-                            }
+                                Intent intent = new Intent(A0.this, Congrats.class);
+                                startActivity(intent);
+                            }rhino.start();
                         }
                         correct = true;
                         Toast.makeText(A0.this, "Correct", Toast.LENGTH_SHORT).show();

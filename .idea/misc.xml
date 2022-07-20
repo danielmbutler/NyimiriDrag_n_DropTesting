@@ -3,7 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Christine/AndroidStudioProjects/NyimiriDrag_n_DropTesting/app/src/main/res/layout/activity_a0.xml" value="0.25" />
+        <entry key="..\:/Users/Christine/AndroidStudioProjects/NyimiriDrag_n_DropTesting/app/src/main/res/drawable-xxxhdpi/rounded_corner_view.xml" value="0.1" />
+        <entry key="..\:/Users/Christine/AndroidStudioProjects/NyimiriDrag_n_DropTesting/app/src/main/res/drawable-xxxhdpi/thumb.xml" value="0.2115" />
+        <entry key="..\:/Users/Christine/AndroidStudioProjects/NyimiriDrag_n_DropTesting/app/src/main/res/drawable-xxxhdpi/track.xml" value="0.2115" />
+        <entry key="..\:/Users/Christine/AndroidStudioProjects/NyimiriDrag_n_DropTesting/app/src/main/res/drawable/ic_baseline_directions_run_24.xml" value="0.1" />
+        <entry key="..\:/Users/Christine/AndroidStudioProjects/NyimiriDrag_n_DropTesting/app/src/main/res/drawable/swipe_button_shape.xml" value="0.1" />
+        <entry key="..\:/Users/Christine/AndroidStudioProjects/NyimiriDrag_n_DropTesting/app/src/main/res/layout/activity_a0.xml" value="0.1" />
+        <entry key="..\:/Users/Christine/AndroidStudioProjects/NyimiriDrag_n_DropTesting/app/src/main/res/layout/activity_a1.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Christine/AndroidStudioProjects/NyimiriDrag_n_DropTesting/app/src/main/res/layout/activity_congrats.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Christine/AndroidStudioProjects/NyimiriDrag_n_DropTesting/app/src/main/res/layout/backup_a0.xml" value="0.20416666666666666" />
       </map>
     </option>

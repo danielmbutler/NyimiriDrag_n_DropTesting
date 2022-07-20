@@ -14,6 +14,12 @@
         android:theme="@style/Theme.NyimiriDrag_n_DropTesting"
         tools:targetApi="31">
         <activity
+            android:name=".Congrats"
+            android:exported="false" />
+        <activity
+            android:name=".A1"
+            android:exported="false" />
+        <activity
             android:name=".A0"
             android:exported="true">
             <intent-filter>

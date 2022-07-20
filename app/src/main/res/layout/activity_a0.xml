@@ -8,17 +8,15 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topLayout"
-        android:layout_width="match_parent"
-        android:layout_height="200dip"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="50dp"
+        android:layout_width="123dp"
+        android:layout_height="148dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
         android:layout_weight="1"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/Hippo_Shadow"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
@@ -29,6 +27,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:adjustViewBounds="true"
             android:contentDescription="@string/todo"
             android:maxWidth="150dp"
@@ -36,6 +35,8 @@
             android:scaleType="fitCenter"
             android:src="@drawable/elephant1"
             android:tag="ELEPHANT"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -45,8 +46,6 @@
             android:layout_width="150dp"
             android:layout_height="152dp"
             android:layout_gravity="center"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:adjustViewBounds="true"
             android:contentDescription="@string/todo"
             android:maxWidth="150dp"
@@ -54,19 +53,23 @@
             android:scaleType="fitCenter"
             android:src="@drawable/hippo1"
             android:tag="HIPPO"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/Rhino"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.409"
             app:layout_constraintStart_toEndOf="@+id/Elephant"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.95" />
 
         <ImageView
             android:id="@+id/Rhino"
             android:layout_width="wrap_content"
             android:layout_height="152dp"
             android:layout_gravity="center"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:adjustViewBounds="true"
             android:contentDescription="@string/todo"
             android:maxWidth="150dp"
@@ -74,7 +77,9 @@
             android:scaleType="fitCenter"
             android:src="@drawable/rhino1"
             android:tag="RHINO"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -86,11 +91,11 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="50dp"
-        android:contentDescription="TODO"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="@string/todo1"
         android:src="@drawable/hippo2"
         android:tag="HIPPO"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/switch1"
         app:layout_constraintEnd_toStartOf="@+id/Rhino_Shadow"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topLayout" />
@@ -109,7 +114,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/Hippo_Shadow"
         app:layout_constraintTop_toTopOf="@+id/Hippo_Shadow"
-        android:contentDescription="TODO" />
+        android:contentDescription="@string/todo2" />
 
 
     <ImageView
@@ -120,21 +125,41 @@
         android:layout_marginStart="6dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
-        android:contentDescription="TODO"
+        android:contentDescription="@string/todo3"
         android:src="@drawable/rhino2"
         android:tag="RHINO"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/Hippo_Shadow"
-        app:layout_constraintTop_toBottomOf="@+id/Elephant_Shadow" />
+        app:layout_constraintTop_toBottomOf="@+id/Elephant_Shadow"/>
 
-    <Button
-        android:id="@+id/Repeat"
-        android:layout_width="wrap_content"
+    <com.ebanx.swipebtn.SwipeButton
+        android:id="@+id/switch1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/repeat"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/next"
+        android:textColor="@color/black"
+        android:textOff="@string/offPlay"
+        android:textOn="@string/onNext"
+        android:textSize="40sp"
+        app:button_background="@drawable/swipe_button_shape"
+        app:button_bottom_padding="10dp"
+        app:button_image_disabled="@drawable/ic_baseline_directions_run_24"
+        app:button_image_enabled="@drawable/ic_baseline_double_arrow_24"
+        app:button_left_padding="10dp"
+        app:button_right_padding="10dp"
+        app:button_top_padding="10dp"
+        app:inner_text="Next"
+        app:inner_text_bottom_padding="10dp"
+        app:inner_text_color="@android:color/white"
+        app:inner_text_size="20sp"
+        app:inner_text_top_padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Hippo_Shadow" />
+        app:layout_constraintTop_toBottomOf="@+id/Hippo_Shadow"
+        app:showText="true" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
