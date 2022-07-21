@@ -1,24 +1,23 @@
 package com.example.nyimiridrag_n_droptesting;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SwitchCompat;
-
 import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+import android.widget.VideoView;
 
+import com.alphamovie.lib.AlphaMovieView;
 import com.ebanx.swipebtn.OnStateChangeListener;
 import com.ebanx.swipebtn.SwipeButton;
 
@@ -35,6 +34,9 @@ public class A0 extends AppCompatActivity {
     ArrayList<String> correctTags;
     View draggedImage;
     SwipeButton swipeNext;
+    VideoView videoView;
+    Button btn_play;
+    AlphaMovieView myVideo1;
 
 
 
@@ -172,9 +174,7 @@ public class A0 extends AppCompatActivity {
                                 correctTags.add(temp1);
                                 showNextImage();
                                 if(i==3){
-                                    applaud.start();
-                                    Intent intent = new Intent(A0.this, Congrats.class);
-                                    startActivity(intent);
+                                    showCongrats();
                             }elephant.start();
                         }
                         correct = true;
@@ -187,9 +187,7 @@ public class A0 extends AppCompatActivity {
                             showNextImage();
                             i++;
                             if(i==3){
-                                applaud.start();
-                                Intent intent = new Intent(A0.this, Congrats.class);
-                                startActivity(intent);
+                                showCongrats();
                             }hippo.start();
                         }
                         correct = true;
@@ -202,9 +200,7 @@ public class A0 extends AppCompatActivity {
                             showNextImage();
                             i++;
                             if(i==3){
-                                applaud.start();
-                                Intent intent = new Intent(A0.this, Congrats.class);
-                                startActivity(intent);
+                                showCongrats();
                             }rhino.start();
                         }
                         correct = true;
@@ -231,5 +227,25 @@ public class A0 extends AppCompatActivity {
         private boolean dropEventNotHandled(DragEvent dragEvent) {
             return !dragEvent.getResult();
         }
+    }
+
+    private void showCongrats() {
+        // hide other views
+        iv1.setVisibility(View.GONE);
+        iv2.setVisibility(View.GONE);
+        iv3.setVisibility(View.GONE);
+        iv4.setVisibility(View.GONE);
+        iv5.setVisibility(View.GONE);
+        iv6.setVisibility(View.GONE);
+
+        // show switch
+        swipeNext.setVisibility(View.VISIBLE);
+
+        // start player
+        applaud.start();
+        myVideo1 = findViewById(R.id.myVideo);
+        myVideo1.setVisibility(View.VISIBLE);
+        Uri myUri = Uri.parse("android.resource://"+getPackageName() + "/" + R.raw.congrats);
+        myVideo1.setVideoFromUri(A0.this,myUri);
     }
 }
