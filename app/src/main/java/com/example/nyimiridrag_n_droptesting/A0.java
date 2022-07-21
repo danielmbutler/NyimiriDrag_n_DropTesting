@@ -8,6 +8,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -104,6 +105,7 @@ public class A0 extends AppCompatActivity {
             @Override
             public void onStateChange(boolean active) {
                 // finish current activity
+                applaud.stop();
                 finish();
                 Intent intent = new Intent(A0.this, A1.class);
                 startActivity(intent);
@@ -120,6 +122,7 @@ public class A0 extends AppCompatActivity {
                 View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
                 view.startDrag(data, shadowBuilder, view, 0);
                 view.setVisibility(View.INVISIBLE);
+                correct = false;
                 draggedImage = view;
                 return true;
             } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
