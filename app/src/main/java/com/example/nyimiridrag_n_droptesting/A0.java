@@ -250,5 +250,6 @@ public class A0 extends AppCompatActivity {
         myVideo1.setVisibility(View.VISIBLE);
         Uri myUri = Uri.parse("android.resource://"+getPackageName() + "/" + R.raw.congrats);
         myVideo1.setVideoFromUri(A0.this,myUri);
+        myVideo1.setLooping(false);
     }
 }
